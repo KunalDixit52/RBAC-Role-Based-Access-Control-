@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import UsersPage from "./pages/UsersPage"; // Ensure this path is correct
+import RolesPage from "./pages/RolesPage";
+import './App.css'; // Import the CSS file for styling
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        {/* Navigation Links */}
+        <nav className="navigation">
+          <ul className="nav-links">
+            <li className="nav-item">
+              <Link to="/users" className="nav-link">Users</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/roles" className="nav-link">Roles</Link>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Routing to different pages */}
+        <Routes>
+          <Route path="/users" element={<UsersPage />} />
+          <Route path="/roles" element={<RolesPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
